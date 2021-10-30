@@ -57,6 +57,24 @@ app.all('/ie', (require, response) => {
     // 设置响应体
     response.send('HELLO IE 缓存');
 })
+
+// 延时响应
+app.all('/delay', (require, response) => {
+    // 设置响应头 设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    setTimeout(() => {
+        // 设置响应体
+        response.send('延时响应');
+    }, 4000)
+})
+
+// jQuery 服务
+app.all('/jquery-server', (request, response) => {
+    // 设置响应头 设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.send('Hello jQuery AJAX');
+})
+
 // 4.监听端口启动服务
 app.listen(8000, () => {
     console.log("服务已经启动， 8000 端口监听中...")
