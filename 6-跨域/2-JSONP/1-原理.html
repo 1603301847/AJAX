@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原理演示</title>
+    <style>
+        #result {
+            width: 120px;
+            height: 130px;
+            border: 1px solid #998999;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="result"></div>
+    <script>
+        //  处理数据
+        function handle(data) {
+            // 获取result元素
+            const result = document.getElementById('result');
+            result.innerHTML = data.name;
+        }
+    </script>
+
+    <!-- vscode安装Five Server (Live Server)插件 右键--Open with Live Server打开页面 -->
+    <!-- <script src="http://127.0.0.1:5500/6-%E8%B7%A8%E5%9F%9F/2-JSONP/js/app.js"></script> -->
+    <script src="http://127.0.0.1:8000/jsonp-server"></script>
+
+</body>
+
+</html>

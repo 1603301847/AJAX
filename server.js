@@ -104,6 +104,61 @@ app.all('/fetch-server', (request, response) => {
     response.send(JSON.stringify(data));
 })
 
+// jsonp 服务
+app.all('/jsonp-server', (request, response) => {
+    // 设置响应头 设置允许跨域
+    // response.send('console.log("Hello jsonp-server")');
+
+    const data = {
+        name: "尚硅谷at"
+    }
+    // 将数据转换为字符串
+    let str = JSON.stringify(data);
+    // 返回结果
+    response.end(`handle(${str})`);
+
+})
+
+// 用户名是否存在
+app.all('/check-username', (request, response) => {
+    const data = {
+        exist: 1,
+        msg: "用户名已存在"
+    }
+    // 将数据转换为字符串
+    let str = JSON.stringify(data);
+    // 返回结果
+    response.end(`handle(${str})`);
+
+})
+
+// jQuery jsonp 服务
+app.all('/jquery-jsonp-server', (request, response) => {
+    // 设置响应头 设置允许跨域
+    // response.send('console.log("Hello jsonp-server")');
+
+    const data = {
+        name: "尚硅谷at",
+        city: ["北京", "上海", "深圳"]
+    }
+    // 将数据转换为字符串
+    let str = JSON.stringify(data);
+    // 接受 callback 参数
+    let cb = request.query.callback;
+    // 返回结果
+    response.end(`${cb}(${str})`);
+})
+
+// cors 服务
+app.all('/cors-server', (request, response) => {
+    // 设置响应头 设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    // response.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
+    response.setHeader('Access-Control-Allow-Headers', '*');
+    response.setHeader('Access-Control-Allow-Method', '*');
+    response.send('Hello cors-server');
+})
+
 // 4.监听端口启动服务
 app.listen(8000, () => {
     console.log("服务已经启动， 8000 端口监听中...")
